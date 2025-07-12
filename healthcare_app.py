@@ -866,8 +866,38 @@ def show_data_exploration(bc_df, diabetes_df):
             x="target",
             title="Diabetes Target Distribution",
             nbins=30,
-            color_discrete_sequence=["#667eea"],
+            color_discrete_sequence=["#4CAF50"],  # Changed to a clearer green color
         )
+        
+        # Add borders and improve styling for better visibility
+        fig2.update_traces(
+            marker=dict(
+                line=dict(color='white', width=1.5),  # White borders between bars
+                opacity=0.8  # Slight transparency for better visual appeal
+            )
+        )
+        
+        # Update layout for better appearance
+        fig2.update_layout(
+            plot_bgcolor='rgba(0,0,0,0)',  # Transparent background
+            paper_bgcolor='rgba(0,0,0,0)',  # Transparent paper background
+            font=dict(color='#2c3e50'),  # Dark text color
+            title=dict(
+                font=dict(size=18, color='#2c3e50'),
+                x=0.5  # Center the title
+            ),
+            xaxis=dict(
+                title='Target Values',
+                gridcolor='rgba(128,128,128,0.2)',  # Light grid lines
+                showgrid=True
+            ),
+            yaxis=dict(
+                title='Frequency',
+                gridcolor='rgba(128,128,128,0.2)',  # Light grid lines
+                showgrid=True
+            )
+        )
+        
         st.plotly_chart(fig2, use_container_width=True)
 
     # Feature correlations
