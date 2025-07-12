@@ -41,88 +41,162 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# Custom CSS for styling
+# Custom CSS for styling with theme inversion and mobile responsiveness
 st.markdown(
     """
 <style>
-    /* Global text styling for better visibility */
+    /* Theme inversion: Dark theme for light mode, light theme for dark mode */
+
+    /* Default theme (light) for when device is in light mode */
+    body {
+        color: #000000 !important;
+    }
     .main {
-        color: white;
+        color: #000000 !important;
         background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 25%, #fd79a8 50%, #e17055 75%, #fdcb6e 100%);
         min-height: 100vh;
     }
-    
+    h1, h2, h3, h4, h5, h6, p, div, span, .stMarkdown {
+        color: #000000 !important;
+    }
+    .sub-header, .metric-card h3, .metric-card h2, .info-box, .section-header {
+        color: #000000 !important;
+    }
+    .stSelectbox > div > div, .stSelectbox > div > div > div, .stSelectbox > div > div > div[data-baseweb="select"], .stSelectbox > div > div > div[data-baseweb="select"] > div {
+        color: #000000 !important;
+    }
+    .stTabs [data-baseweb="tab"], .stTabs [data-baseweb="tab"][aria-selected="true"] {
+        color: #000000 !important;
+    }
+    div[style*="color: #ffffff"], h4[style*="color: #ffffff"] {
+        color: #000000 !important;
+    }
+    .main .block-container {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 248, 240, 0.8) 50%, rgba(255, 228, 225, 0.8) 100%);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+    .metric-card {
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #e9ecef 100%);
+    }
+    .info-box {
+        background: linear-gradient(135deg, #e8f5e8 0%, #f1f8e9 50%, #fff3e0 100%);
+        border: 2px solid #00b894;
+    }
+    .section-header {
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    }
+    .css-1d391kg { /* Sidebar */
+        background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+    }
+    .sidebar-content h2, .sidebar-content h3 {
+        color: #000000 !important;
+    }
+    .stSelectbox > div > div {
+        background: linear-gradient(90deg, #ffffff 0%, #f8f9fa 100%);
+    }
+    .stTabs [data-baseweb="tab-list"] {
+        background: linear-gradient(90deg, #ffffff 0%, #f8f9fa 100%);
+    }
+    .stTabs [data-baseweb="tab"][aria-selected="true"] {
+        background: linear-gradient(90deg, #f8f9fa 0%, #ffffff 100%);
+    }
+
+
+    /* Dark theme for when device is in dark mode */
+    @media (prefers-color-scheme: dark) {
+        body {
+            color: #ffffff !important;
+        }
+        .main {
+            color: #ffffff !important;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 25%, #1a252f 50%, #2d3436 75%, #636e72 100%);
+        }
+        h1, h2, h3, h4, h5, h6, p, div, span, .stMarkdown {
+            color: #ffffff !important;
+        }
+        .main .block-container {
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.8) 0%, rgba(52, 73, 94, 0.8) 50%, rgba(26, 37, 47, 0.8) 100%);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        .metric-card {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #3d566e 100%);
+        }
+        .info-box {
+            background: linear-gradient(135deg, #2d3436 0%, #636e72 50%, #74b9ff 100%);
+            border: 2px solid #74b9ff;
+        }
+        .section-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+        }
+        .css-1d391kg { /* Sidebar */
+            background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
+        }
+        .sidebar-content h2, .sidebar-content h3 {
+            color: #ffffff !important;
+        }
+        .stSelectbox > div > div {
+            background: linear-gradient(90deg, #2c3e50 0%, #34495e 100%);
+        }
+        .stTabs [data-baseweb="tab-list"] {
+            background: linear-gradient(90deg, #2c3e50 0%, #34495e 100%);
+        }
+        .stTabs [data-baseweb="tab"][aria-selected="true"] {
+            background: linear-gradient(90deg, #34495e 0%, #2c3e50 100%);
+        }
+        div[style*="color: #000000"], h4[style*="color: #000000"] {
+            color: #ffffff !important;
+        }
+    }
+
+    /* General styles that apply to both themes */
     .main-header {
         font-size: 3.5rem;
         font-weight: bold;
         background: linear-gradient(90deg, #6c5ce7 0%, #a29bfe 50%, #fd79a8 100%);
-        background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         text-align: center;
         margin-bottom: 1rem;
     }
-    
+
     .sub-header {
         font-size: 1.8rem;
-        color: white;
         font-weight: bold;
         margin-bottom: 1rem;
         border-bottom: 3px solid #6c5ce7;
         padding-bottom: 0.5rem;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     }
-    
+
     .metric-card {
-        background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #3d566e 100%);
         padding: 1.5rem;
         border-radius: 20px;
-        color: white;
         text-align: center;
         margin: 1rem 0;
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
         border: 2px solid #ff7675;
         transition: transform 0.3s ease;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
     }
-    
-    .metric-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-        border-color: #fd79a8;
-    }
-    
-    .metric-card h3 {
-        color: #ecf0f1 !important;
-        font-size: 1.1rem;
-        margin-bottom: 0.5rem;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-    }
-    
-    .metric-card h2 {
-        color: white !important;
-        font-size: 2.2rem;
-        margin-top: 0.5rem;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
-    
+
     .info-box {
-        background: linear-gradient(135deg, #e8f5e8 0%, #f1f8e9 50%, #fff3e0 100%);
         padding: 1.2rem;
         border-radius: 15px;
-        color: #2d3436;
         margin: 0.5rem 0;
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
         font-weight: 500;
-        border: 2px solid #00b894;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    
-    .info-box:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+
+    .section-header {
+        padding: 1.5rem;
+        border-radius: 15px;
+        margin: 1rem 0;
+        font-weight: bold;
+        text-align: center;
+        box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        border: 2px solid #ff7675;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     }
-    
+
     .prediction-result {
         padding: 2rem;
         border-radius: 20px;
@@ -134,51 +208,25 @@ st.markdown(
         border: 3px solid;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    
-    .prediction-result:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-    }
-    
     .positive-result {
         background: linear-gradient(135deg, #ffe0e0 0%, #ffb3b3 100%);
-        color: #c0392b;
+        color: #c0392b !important;
         border-color: #e74c3c;
     }
-    
     .negative-result {
         background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
-        color: #27ae60;
+        color: #27ae60 !important;
         border-color: #2ecc71;
     }
-    
     .moderate-result {
         background: linear-gradient(135deg, #FFC3C3 0%, #FFB3B3 100%);
-        color: #c0392b;
+        color: #c0392b !important;
         border-color: #e74c3c;
     }
-    
-    .sidebar-content {
-        background: linear-gradient(180deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
-        padding: 1.5rem;
-        border-radius: 20px;
-        color: white;
-        margin: 1rem 0;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-        font-weight: 500;
-        border: 2px solid #ff7675;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .sidebar-content:hover {
-        transform: translateX(5px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-    }
-    
-    /* Enhanced button styling */
+
     .stButton > button {
         background: linear-gradient(45deg, #ff7675 0%, #fd79a8 100%);
-        color: white;
+        color: white !important;
         border: none;
         border-radius: 30px;
         padding: 0.8rem 2rem;
@@ -189,173 +237,26 @@ st.markdown(
         text-transform: uppercase;
         letter-spacing: 1px;
     }
-    
-    .stButton > button:hover {
-        background: linear-gradient(45deg, #fd79a8 0%, #ff7675 100%);
-        transform: translateY(-2px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    }
-    
-    /* Slider styling */
-    .stSlider > div > div > div > div {
-        background: linear-gradient(90deg, #ff7675 0%, #fd79a8 100%);
-    }
-    
-    /* Selectbox styling */
+
     .stSelectbox > div > div {
-        background: linear-gradient(90deg, #2c3e50 0%, #34495e 100%);
-        color: white;
         border: 2px solid #ff7675;
         border-radius: 10px;
-        transition: transform 0.3s ease, border-color 0.3s ease;
     }
-    
-    .stSelectbox > div > div:hover {
-        transform: translateY(-2px);
-        border-color: #fd79a8;
-    }
-    
-    .stSelectbox > div > div > div {
-        color: white !important;
-        font-weight: bold;
-    }
-    
-    .stSelectbox > div > div > div[data-baseweb="select"] {
-        background: linear-gradient(90deg, #2c3e50 0%, #34495e 100%);
-        color: white;
-    }
-    
-    .stSelectbox > div > div > div[data-baseweb="select"] > div {
-        color: white !important;
-    }
-    
-    /* Main container background */
-    .main .block-container {
-        background: linear-gradient(135deg, #ffffff 0%, #fff8f0 50%, #ffe4e1 100%);
-        border-radius: 20px;
-        padding: 2rem;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        backdrop-filter: blur(10px);
-        border: 2px solid rgba(255, 255, 255, 0.3);
-    }
-    
-    /* Text elements for better contrast */
-    .stMarkdown {
-        color: white;
-    }
-    
-    /* Enhance data tables */
-    .dataframe {
-        background: linear-gradient(135deg, #ffffff 0%, #fff8f0 100%);
-        border-radius: 15px;
-        border: 2px solid #ff7675;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .dataframe:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-    }
-    
-    /* Tab styling */
+
     .stTabs [data-baseweb="tab-list"] {
-        background: linear-gradient(90deg, #2c3e50 0%, #34495e 100%);
         border-radius: 15px;
         border: 2px solid #ff7675;
-        transition: transform 0.3s ease;
     }
-    
-    .stTabs [data-baseweb="tab-list"]:hover {
-        transform: translateY(-2px);
-    }
-    
-    .stTabs [data-baseweb="tab"] {
-        color: white;
-        font-weight: bold;
-        transition: all 0.3s ease;
-    }
-    
-    .stTabs [data-baseweb="tab"]:hover {
-        background: rgba(255, 255, 255, 0.1);
-        color: #fd79a8 !important;
-    }
-    
-    .stTabs [data-baseweb="tab"][aria-selected="true"] {
-        color: white !important;
-        background: linear-gradient(90deg, #34495e 0%, #2c3e50 100%);
-    }
-    
-    /* Enhanced sidebar */
-    .css-1d391kg {
-        background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
-    }
-    
-    /* Plot container styling */
-    .js-plotly-plot {
-        border-radius: 20px;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-        border: 2px solid #ff7675;
-        background: linear-gradient(135deg, #ffffff 0%, #fff8f0 100%);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    
-    .js-plotly-plot:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    }
-    
-    /* Enhanced typography */
-    h1, h2, h3, h4, h5, h6 {
-        color: white !important;
-        font-weight: bold;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
-    
-    p, div, span {
-        color: white;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-    }
-    
-    /* Custom styled sections */
-    .section-header {
-        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-        color: white;
-        padding: 1.5rem;
-        border-radius: 15px;
-        margin: 1rem 0;
-        font-weight: bold;
-        text-align: center;
-        box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-        border: 2px solid #ff7675;
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    }
-    
-    .section-header:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-        border-color: #fd79a8;
-    }
-    
-    /* Slider hover effects */
-    .stSlider {
-        transition: transform 0.3s ease;
-    }
-    
-    .stSlider:hover {
-        transform: translateY(-2px);
-    }
-    
-    /* Image hover effects */
-    .stImage > img {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        border-radius: 15px;
-    }
-    
-    .stImage:hover > img {
-        transform: scale(1.02);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+        .main { padding: 0.5rem; }
+        .main .block-container { padding: 1rem; margin: 0.5rem; }
+        .main-header { font-size: 2.5rem !important; }
+        .sub-header { font-size: 1.4rem !important; }
+        .metric-card { margin: 0.5rem 0; padding: 1rem; }
+        .prediction-result { padding: 1rem; font-size: 1.1rem; }
+        .section-header { padding: 1rem; font-size: 1.2rem; }
     }
 </style>
 """,
@@ -379,7 +280,7 @@ def load_image_from_resources(image_name):
         if os.path.exists(image_path):
             return Image.open(image_path)
         return None
-    except Exception as e:
+    except Exception:
         st.warning(f"Could not load image: {image_name}")
         return None
 
@@ -452,7 +353,9 @@ def main():
         unsafe_allow_html=True,
     )
     st.markdown(
-        '<p style="text-align: center; font-size: 1.3rem; color: white; margin-bottom: 2rem; font-weight: 500; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Advanced Machine Learning for Healthcare Predictions & Analysis</p>',
+        """
+        <p style="text-align: center; font-size: 1.3rem; margin-bottom: 2rem; font-weight: 500;">Advanced Machine Learning for Healthcare Predictions & Analysis</p>
+        """,
         unsafe_allow_html=True,
     )
 
@@ -489,7 +392,7 @@ def main():
         st.markdown("**Models:** XGBoost ML Algorithms")
         st.markdown("**Features:** Interactive Predictions")
         st.markdown("**Data:** Medical Datasets")
-        st.markdown("</div>", unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
 
     # Main content based on selection
     if model_choice == "Breast Cancer Classification":
@@ -961,8 +864,8 @@ def show_footer():
     st.markdown("---")
     st.markdown(
         """
-    <div style='text-align: center; color: white; padding: 2rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);'>
-        <h4 style='color: white; margin-bottom: 1rem;'>Healthcare ML Analytics Dashboard</h4>
+    <div style='text-align: center; padding: 2rem;'>
+        <h4>Healthcare ML Analytics Dashboard</h4>
     </div>
     """,
         unsafe_allow_html=True,
