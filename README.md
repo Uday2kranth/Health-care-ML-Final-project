@@ -5,10 +5,8 @@ A comprehensive machine learning project for healthcare data analysis featuring 
 ## Live Demo
 
 **Try the Live Application:**
-- **Streamlit App**: [Healthcare ML Dashboard](https://your-app-name.streamlit.app)
-- **Alternative Deploy**: [Healthcare Analytics](https://your-app-name.herokuapp.com)
-
-> **Note**: Replace the placeholder URLs above with your actual deployment links
+- **Streamlit App**: [Healthcare ML Dashboard](https://udaykranthi-health-care-ml-final-projectgitday.streamlit.app/)
+- **Repository**: [GitHub Repository](https://github.com/Uday2kranth/Health-care-ML-Final-project)
 
 ## Project Overview
 
@@ -46,8 +44,8 @@ healthcare-ml-dashboard/
 
 1. **Clone or Download the Repository**
    ```bash
-   git clone https://github.com/your-username/healthcare-ml-dashboard.git
-   cd healthcare-ml-dashboard
+   git clone https://github.com/Uday2kranth/Health-care-ML-Final-project.git
+   cd Health-care-ML-Final-project
    ```
 
 2. **Install Dependencies**
@@ -71,15 +69,7 @@ healthcare-ml-dashboard/
 2. Sign up at [Streamlit Cloud](https://streamlit.io/cloud)
 3. Connect your GitHub repository
 4. Deploy with one click
-5. Update the live demo link above
-
-#### **Heroku Deployment**
-1. Create a `Procfile` in the root directory:
-   ```
-   web: streamlit run healthcare_app.py --server.port=$PORT --server.address=0.0.0.0
-   ```
-2. Deploy to Heroku following their Python app guidelines
-3. Update the live demo link above
+5. Live app: [Healthcare ML Dashboard](https://udaykranthi-health-care-ml-final-projectgitday.streamlit.app/)
 
 #### **Other Deployment Options**
 - **Railway**: Simple deployment with GitHub integration
@@ -204,8 +194,8 @@ The interactive web application provides a user-friendly interface for healthcar
 #### **1. Environment Setup**
 ```bash
 # After cloning/downloading
-git clone https://github.com/your-username/healthcare-ml-dashboard.git
-cd healthcare-ml-dashboard
+git clone https://github.com/Uday2kranth/Health-care-ML-Final-project.git
+cd Health-care-ML-Final-project
 pip install -r requirements.txt
 ```
 
@@ -235,21 +225,13 @@ streamlit run healthcare_app.py
 2. Sign up at [Streamlit Cloud](https://streamlit.io/cloud)
 3. Connect your GitHub repository
 4. Click "Deploy app"
-5. Share your live link: `https://your-app-name.streamlit.app`
+5. Live app: [Healthcare ML Dashboard](https://udaykranthi-health-care-ml-final-projectgitday.streamlit.app/)
 
-##### **Deploy to Heroku**
-1. Create a Heroku account
-2. Install Heroku CLI
-3. Create `Procfile` with:
-   ```
-   web: streamlit run healthcare_app.py --server.port=$PORT --server.address=0.0.0.0
-   ```
-4. Deploy using:
-   ```bash
-   heroku create your-app-name
-   git push heroku main
-   ```
-5. Share your live link: `https://your-app-name.herokuapp.com`
+##### **Alternative Deployment Options**
+- **Railway**: Simple deployment with GitHub integration
+- **Render**: Free tier available for small projects  
+- **Google Cloud Platform**: Professional deployment option
+- **AWS**: Enterprise-level deployment solution
 
 #### **4. Using the Dashboard**
 
@@ -356,14 +338,12 @@ resources/
 
 ## Deployment Links
 
-**Live Applications:**
-- **Primary**: [Healthcare ML Dashboard](https://your-app-name.streamlit.app) - *Replace with your Streamlit Cloud URL*
-- **Backup**: [Healthcare Analytics](https://your-app-name.herokuapp.com) - *Replace with your Heroku URL*
-- **Repository**: [GitHub Repository](https://github.com/your-username/healthcare-ml-dashboard) - *Replace with your GitHub URL*
+**Live Application:**
+- **Primary**: [Healthcare ML Dashboard](https://udaykranthi-health-care-ml-final-projectgitday.streamlit.app/) - *Streamlit Cloud Deployment*
+- **Repository**: [GitHub Repository](https://github.com/Uday2kranth/Health-care-ML-Final-project) - *Source Code*
 
 **Deployment Status:**
-- [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://your-app-name.streamlit.app)
-- [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+- [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://udaykranthi-health-care-ml-final-projectgitday.streamlit.app/)
 
 ## License
 
