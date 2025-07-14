@@ -1,8 +1,10 @@
-<<<<<<< HEAD
 # Project specific ignores
 .dist/
 remove later or shift location/
 Project_template_MS AI.pptx
+
+# VS Code Development Container
+.devcontainer/
 
 # Python specific ignores
 __pycache__/
